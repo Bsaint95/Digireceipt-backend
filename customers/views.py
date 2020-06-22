@@ -21,5 +21,15 @@ def single(request, id):
 			return JsonResponse({
 				'error': 'customer does not exist'
 				}, status = status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def customer(request):
+    if request.method == 'POST':
+        issue_no = request.data['issue_no']
+        name = request.data['name']
+        email = request.data['email']
+        platform = request.data['platform']
+        return JsonResponse(issue_no, name, email, platform, safe = False)
 		
 
